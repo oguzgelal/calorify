@@ -105,6 +105,177 @@ module.exports = {
       });
     });
 
+Food.create({ name: 'Fries' }).exec(function(e, food){
+      FoodTexture.create({ textureOf: food }).exec(function(e, foodTexture){
+        Food.update({ id: food.id }, { ofTexture: foodTexture }).exec(function(){  });
+        SolidFood.create({ ofFoodTexture: foodTexture }).exec(function(e, foodTextureSolid){
+          FoodTexture.update({ id: foodTexture.id }, { isSolid: foodTextureSolid }).exec(function(){});
+        });
+      });
+      Portion.create({ ofFood: food, quantity: 1 }).exec(function(e, foodPortion){
+        PortionType.create({ ofPortion: foodPortion }).exec(function(e, foodPortionType){
+          Portion.update({id: foodPortion.id }, { ofType: foodPortionType }).exec(function(){});
+          Unit.create({ ofPortionType: foodPortionType }).exec(function(e, foodPortionTypeUnit){
+            PortionType.update({id: foodPortionType.id}, { isUnit: foodPortionTypeUnit }).exec(function(){ });
+          });
+        });
+        Nutrient.create({ ofPortion: foodPortion }).exec(function(e, foodPortionNutrient){
+          Calorie.create({ ofNutrient: foodPortionNutrient, val: 312 }).exec(function(e, foodPortionNutrientCalorie){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isCalorie: foodPortionNutrientCalorie }).exec(function(){});
+          });
+          Fat.create({ ofNutrient: foodPortionNutrient, val: 15 }).exec(function(e, foodPortionNutrientFat){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isFat: foodPortionNutrientFat }).exec(function(){});
+          });
+          Protein.create({ ofNutrient: foodPortionNutrient, val: 3.4 }).exec(function(e, foodPortionNutrientProtein){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isFat: foodPortionNutrientProtein }).exec(function(){});
+          });
+        });
+      });
+      FoodType.create({ categoryOf: food }).exec(function(e, foodCategory){
+        Food.update({ id: food.id }, { ofCategory: foodCategory }).exec(function(){ });
+        Fruit.create({ ofFoodType: foodCategory }).exec(function(e, foodCategoryFruit){
+          FoodType.update({ id: foodCategory.id }, { isFruit: foodCategoryFruit }).exec(function(){ });
+        });
+      });
+    });
+
+Food.create({ name: 'Eggs' }).exec(function(e, food){
+      FoodTexture.create({ textureOf: food }).exec(function(e, foodTexture){
+        Food.update({ id: food.id }, { ofTexture: foodTexture }).exec(function(){  });
+        SolidFood.create({ ofFoodTexture: foodTexture }).exec(function(e, foodTextureSolid){
+          FoodTexture.update({ id: foodTexture.id }, { isSolid: foodTextureSolid }).exec(function(){});
+        });
+      });
+      Portion.create({ ofFood: food, quantity: 1 }).exec(function(e, foodPortion){
+        PortionType.create({ ofPortion: foodPortion }).exec(function(e, foodPortionType){
+          Portion.update({id: foodPortion.id }, { ofType: foodPortionType }).exec(function(){});
+          Unit.create({ ofPortionType: foodPortionType }).exec(function(e, foodPortionTypeUnit){
+            PortionType.update({id: foodPortionType.id}, { isUnit: foodPortionTypeUnit }).exec(function(){ });
+          });
+        });
+        Nutrient.create({ ofPortion: foodPortion }).exec(function(e, foodPortionNutrient){
+          Calorie.create({ ofNutrient: foodPortionNutrient, val: 155 }).exec(function(e, foodPortionNutrientCalorie){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isCalorie: foodPortionNutrientCalorie }).exec(function(){});
+          });
+          Fat.create({ ofNutrient: foodPortionNutrient, val: 11 }).exec(function(e, foodPortionNutrientFat){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isFat: foodPortionNutrientFat }).exec(function(){});
+          });
+          Protein.create({ ofNutrient: foodPortionNutrient, val: 13 }).exec(function(e, foodPortionNutrientProtein){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isFat: foodPortionNutrientProtein }).exec(function(){});
+          });
+        });
+      });
+      FoodType.create({ categoryOf: food }).exec(function(e, foodCategory){
+        Food.update({ id: food.id }, { ofCategory: foodCategory }).exec(function(){ });
+        Fruit.create({ ofFoodType: foodCategory }).exec(function(e, foodCategoryFruit){
+          FoodType.update({ id: foodCategory.id }, { isFruit: foodCategoryFruit }).exec(function(){ });
+        });
+      });
+    });
+
+Food.create({ name: 'Pasta' }).exec(function(e, food){
+      FoodTexture.create({ textureOf: food }).exec(function(e, foodTexture){
+        Food.update({ id: food.id }, { ofTexture: foodTexture }).exec(function(){  });
+        SolidFood.create({ ofFoodTexture: foodTexture }).exec(function(e, foodTextureSolid){
+          FoodTexture.update({ id: foodTexture.id }, { isSolid: foodTextureSolid }).exec(function(){});
+        });
+      });
+      Portion.create({ ofFood: food, quantity: 1 }).exec(function(e, foodPortion){
+        PortionType.create({ ofPortion: foodPortion }).exec(function(e, foodPortionType){
+          Portion.update({id: foodPortion.id }, { ofType: foodPortionType }).exec(function(){});
+          Unit.create({ ofPortionType: foodPortionType }).exec(function(e, foodPortionTypeUnit){
+            PortionType.update({id: foodPortionType.id}, { isUnit: foodPortionTypeUnit }).exec(function(){ });
+          });
+        });
+        Nutrient.create({ ofPortion: foodPortion }).exec(function(e, foodPortionNutrient){
+          Calorie.create({ ofNutrient: foodPortionNutrient, val: 155 }).exec(function(e, foodPortionNutrientCalorie){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isCalorie: foodPortionNutrientCalorie }).exec(function(){});
+          });
+          Fat.create({ ofNutrient: foodPortionNutrient, val: 1.1 }).exec(function(e, foodPortionNutrientFat){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isFat: foodPortionNutrientFat }).exec(function(){});
+          });
+          Protein.create({ ofNutrient: foodPortionNutrient, val: 5 }).exec(function(e, foodPortionNutrientProtein){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isFat: foodPortionNutrientProtein }).exec(function(){});
+          });
+        });
+      });
+      FoodType.create({ categoryOf: food }).exec(function(e, foodCategory){
+        Food.update({ id: food.id }, { ofCategory: foodCategory }).exec(function(){ });
+        Fruit.create({ ofFoodType: foodCategory }).exec(function(e, foodCategoryFruit){
+          FoodType.update({ id: foodCategory.id }, { isFruit: foodCategoryFruit }).exec(function(){ });
+        });
+      });
+    });
+
+Food.create({ name: 'Bread' }).exec(function(e, food){
+      FoodTexture.create({ textureOf: food }).exec(function(e, foodTexture){
+        Food.update({ id: food.id }, { ofTexture: foodTexture }).exec(function(){  });
+        SolidFood.create({ ofFoodTexture: foodTexture }).exec(function(e, foodTextureSolid){
+          FoodTexture.update({ id: foodTexture.id }, { isSolid: foodTextureSolid }).exec(function(){});
+        });
+      });
+      Portion.create({ ofFood: food, quantity: 1 }).exec(function(e, foodPortion){
+        PortionType.create({ ofPortion: foodPortion }).exec(function(e, foodPortionType){
+          Portion.update({id: foodPortion.id }, { ofType: foodPortionType }).exec(function(){});
+          Unit.create({ ofPortionType: foodPortionType }).exec(function(e, foodPortionTypeUnit){
+            PortionType.update({id: foodPortionType.id}, { isUnit: foodPortionTypeUnit }).exec(function(){ });
+          });
+        });
+        Nutrient.create({ ofPortion: foodPortion }).exec(function(e, foodPortionNutrient){
+          Calorie.create({ ofNutrient: foodPortionNutrient, val: 265 }).exec(function(e, foodPortionNutrientCalorie){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isCalorie: foodPortionNutrientCalorie }).exec(function(){});
+          });
+          Fat.create({ ofNutrient: foodPortionNutrient, val: 3.2 }).exec(function(e, foodPortionNutrientFat){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isFat: foodPortionNutrientFat }).exec(function(){});
+          });
+          Protein.create({ ofNutrient: foodPortionNutrient, val: 9 }).exec(function(e, foodPortionNutrientProtein){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isFat: foodPortionNutrientProtein }).exec(function(){});
+          });
+        });
+      });
+      FoodType.create({ categoryOf: food }).exec(function(e, foodCategory){
+        Food.update({ id: food.id }, { ofCategory: foodCategory }).exec(function(){ });
+        Fruit.create({ ofFoodType: foodCategory }).exec(function(e, foodCategoryFruit){
+          FoodType.update({ id: foodCategory.id }, { isFruit: foodCategoryFruit }).exec(function(){ });
+        });
+      });
+    });
+
+    Food.create({ name: 'Sausage' }).exec(function(e, food){
+      FoodTexture.create({ textureOf: food }).exec(function(e, foodTexture){
+        Food.update({ id: food.id }, { ofTexture: foodTexture }).exec(function(){  });
+        SolidFood.create({ ofFoodTexture: foodTexture }).exec(function(e, foodTextureSolid){
+          FoodTexture.update({ id: foodTexture.id }, { isSolid: foodTextureSolid }).exec(function(){});
+        });
+      });
+      Portion.create({ ofFood: food, quantity: 1 }).exec(function(e, foodPortion){
+        PortionType.create({ ofPortion: foodPortion }).exec(function(e, foodPortionType){
+          Portion.update({id: foodPortion.id }, { ofType: foodPortionType }).exec(function(){});
+          Unit.create({ ofPortionType: foodPortionType }).exec(function(e, foodPortionTypeUnit){
+            PortionType.update({id: foodPortionType.id}, { isUnit: foodPortionTypeUnit }).exec(function(){ });
+          });
+        });
+        Nutrient.create({ ofPortion: foodPortion }).exec(function(e, foodPortionNutrient){
+          Calorie.create({ ofNutrient: foodPortionNutrient, val: 301 }).exec(function(e, foodPortionNutrientCalorie){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isCalorie: foodPortionNutrientCalorie }).exec(function(){});
+          });
+          Fat.create({ ofNutrient: foodPortionNutrient, val: 27 }).exec(function(e, foodPortionNutrientFat){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isFat: foodPortionNutrientFat }).exec(function(){});
+          });
+          Protein.create({ ofNutrient: foodPortionNutrient, val: 12 }).exec(function(e, foodPortionNutrientProtein){
+            Nutrient.update({ id: foodPortionNutrient.id }, { isFat: foodPortionNutrientProtein }).exec(function(){});
+          });
+        });
+      });
+      FoodType.create({ categoryOf: food }).exec(function(e, foodCategory){
+        Food.update({ id: food.id }, { ofCategory: foodCategory }).exec(function(){ });
+        Fruit.create({ ofFoodType: foodCategory }).exec(function(e, foodCategoryFruit){
+          FoodType.update({ id: foodCategory.id }, { isFruit: foodCategoryFruit }).exec(function(){ });
+        });
+      });
+    });
+
+
     Food.create({ name: 'Wine' }).exec(function(e, food){
       FoodTexture.create({ textureOf: food }).exec(function(e, foodTexture){
         Food.update({ id: food.id }, { ofTexture: foodTexture }).exec(function(){  });
@@ -161,6 +332,7 @@ module.exports = {
       });
     });
 
+    
     // Create the exercise
     Exercise.create({ name: 'Sit-ups' }).exec(function(e, exercise){
       // Determin that the amount has the quantity of 50 (whether it is 50 repetitions or 50 minutes is not set yet)
