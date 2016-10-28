@@ -18,6 +18,10 @@ module.exports = {
       model: 'exerciseType'
     },
 
+    name: {
+      type: 'string'
+    }
+
   }
 };
 

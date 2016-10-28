@@ -65,7 +65,7 @@ module.exports = {
         // Create Fruit for Apple Food Type
         Fruit.create({ ofFoodType: appleCategory }).exec(function(e, appleCategoryFruit){
           // Link Fruit with Apple Food Type
-          FoodType.find({ id: appleCategory.id }, { isFruit: appleCategoryFruit }).exec(function(){ });
+          FoodType.update({ id: appleCategory.id }, { isFruit: appleCategoryFruit }).exec(function(){ });
         });
       });
     });
@@ -100,7 +100,7 @@ module.exports = {
       FoodType.create({ categoryOf: food }).exec(function(e, foodCategory){
         Food.update({ id: food.id }, { ofCategory: foodCategory }).exec(function(){ });
         Fruit.create({ ofFoodType: foodCategory }).exec(function(e, foodCategoryFruit){
-          FoodType.find({ id: foodCategory.id }, { isFruit: foodCategoryFruit }).exec(function(){ });
+          FoodType.update({ id: foodCategory.id }, { isFruit: foodCategoryFruit }).exec(function(){ });
         });
       });
     });
@@ -156,6 +156,36 @@ module.exports = {
           });
           Protein.create({ ofNutrient: foodPortionNutrient, val: 1.6 }).exec(function(e, foodPortionNutrientProtein){
             Nutrient.update({ id: foodPortionNutrient.id }, { isFat: foodPortionNutrientProtein }).exec(function(){});
+          });
+        });
+      });
+    });
+
+    // Create the exercise
+    Exercise.create({ name: 'Sit-ups' }).exec(function(e, exercise){
+      // Determin that the amount has the quantity of 50 (whether it is 50 repetitions or 50 minutes is not set yet)
+      Amount.create({ ofExercise: exercise, quantity: 50 }).exec(function(e, exerciseAmount){
+        AmountType.create({ ofAmount: exerciseAmount }).exec(function(e, exerciseAmountType){
+          Amount.update({ id: exerciseAmount.id }, { ofType: exerciseAmountType }).exec(function(){ });
+          // This is where you determine that the amount type is repetitions (with 20kg)
+          Repetition.create({ ofAmountType: exerciseAmountType, weight: 20 }).exec(function(e, exerciseAmountTypeRepetition){
+            AmountType.update({ id: exerciseAmountType.id }, { isRepetition: exerciseAmountTypeRepetition }).exec(function(){ });
+          });
+        });
+        // Create calorie object with 200, and hook it up with the amount (50 reps with 20kg = 200 kcal)
+        Calorie.create({ val: 200, burnedBy: exerciseAmount }).exec(function(e, exerciseAmountCalorie){
+          Amount.update({ id: exerciseAmount.id }, { burns: exerciseAmountCalorie }).exec(function(){ });
+        });
+      });
+      // Create the exercise type of sit-ups
+      ExerciseType.create({ categoryOf: exercise }).exec(function(e, exerciseCategory){
+        Exercise.update({ id: exercise.id }, { ofCategory: exerciseCategory }).exec(function(){ });
+        // Sit-ups is a muscle exercise
+        Muscle.create({ ofExerciseType: exerciseCategory }).exec(function(e, exerciseCategoryMuscle){
+          ExerciseType.update({ id: exerciseCategory.id }, { isMuscle: exerciseCategoryMuscle }).exec(function(){ });
+          // Sit-ups is a muscle exercise that trains abdominals
+          Abdominal.create({ ofMuscleExercise: exerciseCategoryMuscle }).exec(function(e, exerciseCategoryMuscleAbs){
+            Muscle.update({ id: exerciseCategoryMuscle.id }, { isAbdominal: exerciseCategoryMuscleAbs }).exec(function(){ });
           });
         });
       });
