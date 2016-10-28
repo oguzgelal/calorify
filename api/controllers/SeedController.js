@@ -364,6 +364,321 @@ Food.create({ name: 'Bread' }).exec(function(e, food){
     });
 
 
+    ///////OSCAR'S EXERCISES'
+    // Create the exercise
+    Exercise.create({ name: 'Chin-ups' }).exec(function(e, exercise){
+      // Determine that the amount has the quantity of 50 (whether it is 50 repetitions or 50 minutes is not set yet)
+      Amount.create({ ofExercise: exercise, quantity: 50 }).exec(function(e, exerciseAmount){
+        AmountType.create({ ofAmount: exerciseAmount }).exec(function(e, exerciseAmountType){
+          Amount.update({ id: exerciseAmount.id }, { ofType: exerciseAmountType }).exec(function(){ });
+          // This is where you determine that the amount type is repetitions (with 20kg)
+          Repetition.create({ ofAmountType: exerciseAmountType, weight: 20 }).exec(function(e, exerciseAmountTypeRepetition){
+            AmountType.update({ id: exerciseAmountType.id }, { isRepetition: exerciseAmountTypeRepetition }).exec(function(){ });
+          });
+        });
+        // Create calorie object with 200, and hook it up with the amount (50 reps with 20kg = 200 kcal)
+        Calorie.create({ val: 100, burnedBy: exerciseAmount }).exec(function(e, exerciseAmountCalorie){
+          Amount.update({ id: exerciseAmount.id }, { burns: exerciseAmountCalorie }).exec(function(){ });
+        });
+      });
+      // Create the exercise type of chin-ups
+      ExerciseType.create({ categoryOf: exercise }).exec(function(e, exerciseCategory){
+        Exercise.update({ id: exercise.id }, { ofCategory: exerciseCategory }).exec(function(){ });
+        // Chin-ups is a muscle exercise
+        Muscle.create({ ofExerciseType: exerciseCategory }).exec(function(e, exerciseCategoryMuscle){
+          ExerciseType.update({ id: exerciseCategory.id }, { isMuscle: exerciseCategoryMuscle }).exec(function(){ });
+          // Chin-ups is a muscle exercise that trains abdominals
+          Back.create({ ofMuscleExercise: exerciseCategoryMuscle }).exec(function(e, exerciseCategoryMuscleBack){
+            Muscle.update({ id: exerciseCategoryMuscle.id }, { isBack: exerciseCategoryMuscleBack }).exec(function(){ });
+          });
+        });
+      });
+    });
+
+
+    
+    // Create the exercise pull-ups
+    Exercise.create({ name: 'Pull-ups' }).exec(function(e, exercise){
+      // Determin that the amount has the quantity of 50 (whether it is 50 repetitions or 50 minutes is not set yet)
+      Amount.create({ ofExercise: exercise, quantity: 50 }).exec(function(e, exerciseAmount){
+        AmountType.create({ ofAmount: exerciseAmount }).exec(function(e, exerciseAmountType){
+          Amount.update({ id: exerciseAmount.id }, { ofType: exerciseAmountType }).exec(function(){ });
+          // This is where you determine that the amount type is repetitions (with 20kg)
+          Repetition.create({ ofAmountType: exerciseAmountType, weight: 20 }).exec(function(e, exerciseAmountTypeRepetition){
+            AmountType.update({ id: exerciseAmountType.id }, { isRepetition: exerciseAmountTypeRepetition }).exec(function(){ });
+          });
+        });
+        // Create calorie object with 200, and hook it up with the amount (50 reps with 20kg = 200 kcal)
+        Calorie.create({ val: 100, burnedBy: exerciseAmount }).exec(function(e, exerciseAmountCalorie){
+          Amount.update({ id: exerciseAmount.id }, { burns: exerciseAmountCalorie }).exec(function(){ });
+        });
+      });
+      // Create the exercise type of sit-ups
+      ExerciseType.create({ categoryOf: exercise }).exec(function(e, exerciseCategory){
+        Exercise.update({ id: exercise.id }, { ofCategory: exerciseCategory }).exec(function(){ });
+        // Pull-ups is a muscle exercise
+        Muscle.create({ ofExerciseType: exerciseCategory }).exec(function(e, exerciseCategoryMuscle){
+          ExerciseType.update({ id: exerciseCategory.id }, { isMuscle: exerciseCategoryMuscle }).exec(function(){ });
+          // Sit-ups is a muscle exercise that trains back
+          Back.create({ ofMuscleExercise: exerciseCategoryMuscle }).exec(function(e, exerciseCategoryMuscleBack){
+            Muscle.update({ id: exerciseCategoryMuscle.id }, { isBack: exerciseCategoryMuscleBack }).exec(function(){ });
+          });
+        });
+      });
+    });
+
+
+
+
+// Create the exercise push-ups
+    Exercise.create({ name: 'Push-ups' }).exec(function(e, exercise){
+      // Determin that the amount has the quantity of 50 (whether it is 50 repetitions or 50 minutes is not set yet)
+      Amount.create({ ofExercise: exercise, quantity: 50 }).exec(function(e, exerciseAmount){
+        AmountType.create({ ofAmount: exerciseAmount }).exec(function(e, exerciseAmountType){
+          Amount.update({ id: exerciseAmount.id }, { ofType: exerciseAmountType }).exec(function(){ });
+          // This is where you determine that the amount type is repetitions (with 20kg)
+          Repetition.create({ ofAmountType: exerciseAmountType, weight: 30 }).exec(function(e, exerciseAmountTypeRepetition){
+            AmountType.update({ id: exerciseAmountType.id }, { isRepetition: exerciseAmountTypeRepetition }).exec(function(){ });
+          });
+        });
+        // Create calorie object with 200, and hook it up with the amount (50 reps with 20kg = 200 kcal)
+        Calorie.create({ val: 300, burnedBy: exerciseAmount }).exec(function(e, exerciseAmountCalorie){
+          Amount.update({ id: exerciseAmount.id }, { burns: exerciseAmountCalorie }).exec(function(){ });
+        });
+      });
+      // Create the exercise type of sit-ups
+      ExerciseType.create({ categoryOf: exercise }).exec(function(e, exerciseCategory){
+        Exercise.update({ id: exercise.id }, { ofCategory: exerciseCategory }).exec(function(){ });
+        // Sit-ups is a muscle exercise
+        Muscle.create({ ofExerciseType: exerciseCategory }).exec(function(e, exerciseCategoryMuscle){
+          ExerciseType.update({ id: exerciseCategory.id }, { isMuscle: exerciseCategoryMuscle }).exec(function(){ });
+          // Sit-ups is a muscle exercise that trains abdominals
+          Chest.create({ ofMuscleExercise: exerciseCategoryMuscle }).exec(function(e, exerciseCategoryMuscleChest){
+            Muscle.update({ id: exerciseCategoryMuscle.id }, { isChest: exerciseCategoryMuscleChest }).exec(function(){ });
+          });
+        });
+      });
+    });
+
+
+// Create the exercise bench press
+    Exercise.create({ name: 'Bench-Press' }).exec(function(e, exercise){
+      // Determin that the amount has the quantity of 50 (whether it is 50 repetitions or 50 minutes is not set yet)
+      Amount.create({ ofExercise: exercise, quantity: 50 }).exec(function(e, exerciseAmount){
+        AmountType.create({ ofAmount: exerciseAmount }).exec(function(e, exerciseAmountType){
+          Amount.update({ id: exerciseAmount.id }, { ofType: exerciseAmountType }).exec(function(){ });
+          // This is where you determine that the amount type is repetitions (with 20kg)
+          Repetition.create({ ofAmountType: exerciseAmountType, weight: 16 }).exec(function(e, exerciseAmountTypeRepetition){
+            AmountType.update({ id: exerciseAmountType.id }, { isRepetition: exerciseAmountTypeRepetition }).exec(function(){ });
+          });
+        });
+        // Create calorie object with 200, and hook it up with the amount (50 reps with 20kg = 200 kcal)
+        Calorie.create({ val: 120, burnedBy: exerciseAmount }).exec(function(e, exerciseAmountCalorie){
+          Amount.update({ id: exerciseAmount.id }, { burns: exerciseAmountCalorie }).exec(function(){ });
+        });
+      });
+      // Create the exercise type of bench-press
+      ExerciseType.create({ categoryOf: exercise }).exec(function(e, exerciseCategory){
+        Exercise.update({ id: exercise.id }, { ofCategory: exerciseCategory }).exec(function(){ });
+        // bench-press is a muscle exercise
+        Muscle.create({ ofExerciseType: exerciseCategory }).exec(function(e, exerciseCategoryMuscle){
+          ExerciseType.update({ id: exerciseCategory.id }, { isMuscle: exerciseCategoryMuscle }).exec(function(){ });
+          // Sit-ups is a muscle exercise that trains abdominals
+          Chest.create({ ofMuscleExercise: exerciseCategoryMuscle }).exec(function(e, exerciseCategoryMuscleChest){
+            Muscle.update({ id: exerciseCategoryMuscle.id }, { isChest: exerciseCategoryMuscleChest }).exec(function(){ });
+          });
+        });
+      });
+    });
+
+    // Create the exercise lat pull up
+    Exercise.create({ name: 'Lat Pull Ups' }).exec(function(e, exercise){
+      // Determin that the amount has the quantity of 50 (whether it is 50 repetitions or 50 minutes is not set yet)
+      Amount.create({ ofExercise: exercise, quantity: 50 }).exec(function(e, exerciseAmount){
+        AmountType.create({ ofAmount: exerciseAmount }).exec(function(e, exerciseAmountType){
+          Amount.update({ id: exerciseAmount.id }, { ofType: exerciseAmountType }).exec(function(){ });
+          // This is where you determine that the amount type is repetitions (with 20kg)
+          Repetition.create({ ofAmountType: exerciseAmountType, weight: 30 }).exec(function(e, exerciseAmountTypeRepetition){
+            AmountType.update({ id: exerciseAmountType.id }, { isRepetition: exerciseAmountTypeRepetition }).exec(function(){ });
+          });
+        });
+        // Create calorie object with 200, and hook it up with the amount (50 reps with 20kg = 200 kcal)
+        Calorie.create({ val: 70, burnedBy: exerciseAmount }).exec(function(e, exerciseAmountCalorie){
+          Amount.update({ id: exerciseAmount.id }, { burns: exerciseAmountCalorie }).exec(function(){ });
+        });
+      });
+      // Create the exercise type of sit-ups
+      ExerciseType.create({ categoryOf: exercise }).exec(function(e, exerciseCategory){
+        Exercise.update({ id: exercise.id }, { ofCategory: exerciseCategory }).exec(function(){ });
+        // Sit-ups is a muscle exercise
+        Muscle.create({ ofExerciseType: exerciseCategory }).exec(function(e, exerciseCategoryMuscle){
+          ExerciseType.update({ id: exerciseCategory.id }, { isMuscle: exerciseCategoryMuscle }).exec(function(){ });
+          // Sit-ups is a muscle exercise that trains abdominals
+          Back.create({ ofMuscleExercise: exerciseCategoryMuscle }).exec(function(e, exerciseCategoryMuscleBack){
+            Muscle.update({ id: exerciseCategoryMuscle.id }, { isBack: exerciseCategoryMuscleBack }).exec(function(){ });
+          });
+        });
+      });
+    });
+
+
+        // Create the exercise overhead press
+    Exercise.create({ name: 'Overhead Press' }).exec(function(e, exercise){
+      // Determin that the amount has the quantity of 50 (whether it is 50 repetitions or 50 minutes is not set yet)
+      Amount.create({ ofExercise: exercise, quantity: 50 }).exec(function(e, exerciseAmount){
+        AmountType.create({ ofAmount: exerciseAmount }).exec(function(e, exerciseAmountType){
+          Amount.update({ id: exerciseAmount.id }, { ofType: exerciseAmountType }).exec(function(){ });
+          // This is where you determine that the amount type is repetitions (with 20kg)
+          Repetition.create({ ofAmountType: exerciseAmountType, weight: 20 }).exec(function(e, exerciseAmountTypeRepetition){
+            AmountType.update({ id: exerciseAmountType.id }, { isRepetition: exerciseAmountTypeRepetition }).exec(function(){ });
+          });
+        });
+        // Create calorie object with 200, and hook it up with the amount (50 reps with 20kg = 200 kcal)
+        Calorie.create({ val: 130, burnedBy: exerciseAmount }).exec(function(e, exerciseAmountCalorie){
+          Amount.update({ id: exerciseAmount.id }, { burns: exerciseAmountCalorie }).exec(function(){ });
+        });
+      });
+      // Create the exercise type of sit-ups
+      ExerciseType.create({ categoryOf: exercise }).exec(function(e, exerciseCategory){
+        Exercise.update({ id: exercise.id }, { ofCategory: exerciseCategory }).exec(function(){ });
+        // Sit-ups is a muscle exercise
+        Muscle.create({ ofExerciseType: exerciseCategory }).exec(function(e, exerciseCategoryMuscle){
+          ExerciseType.update({ id: exerciseCategory.id }, { isMuscle: exerciseCategoryMuscle }).exec(function(){ });
+          // Sit-ups is a muscle exercise that trains abdominals
+          Shoulder.create({ ofMuscleExercise: exerciseCategoryMuscle }).exec(function(e, exerciseCategoryMuscleShoulder){
+            Muscle.update({ id: exerciseCategoryMuscle.id }, { isShoulder: exerciseCategoryMuscleShoulder }).exec(function(){ });
+          });
+        });
+      });
+    });
+
+    // Create the exercise triceps extension
+    Exercise.create({ name: 'Triceps Extension' }).exec(function(e, exercise){
+      // Determin that the amount has the quantity of 50 (whether it is 50 repetitions or 50 minutes is not set yet)
+      Amount.create({ ofExercise: exercise, quantity: 50 }).exec(function(e, exerciseAmount){
+        AmountType.create({ ofAmount: exerciseAmount }).exec(function(e, exerciseAmountType){
+          Amount.update({ id: exerciseAmount.id }, { ofType: exerciseAmountType }).exec(function(){ });
+          // This is where you determine that the amount type is repetitions (with 20kg)
+          Repetition.create({ ofAmountType: exerciseAmountType, weight: 20 }).exec(function(e, exerciseAmountTypeRepetition){
+            AmountType.update({ id: exerciseAmountType.id }, { isRepetition: exerciseAmountTypeRepetition }).exec(function(){ });
+          });
+        });
+        // Create calorie object with 200, and hook it up with the amount (50 reps with 20kg = 200 kcal)
+        Calorie.create({ val: 30, burnedBy: exerciseAmount }).exec(function(e, exerciseAmountCalorie){
+          Amount.update({ id: exerciseAmount.id }, { burns: exerciseAmountCalorie }).exec(function(){ });
+        });
+      });
+      // Create the exercise type of sit-ups
+      ExerciseType.create({ categoryOf: exercise }).exec(function(e, exerciseCategory){
+        Exercise.update({ id: exercise.id }, { ofCategory: exerciseCategory }).exec(function(){ });
+        // Sit-ups is a muscle exercise
+        Muscle.create({ ofExerciseType: exerciseCategory }).exec(function(e, exerciseCategoryMuscle){
+          ExerciseType.update({ id: exerciseCategory.id }, { isMuscle: exerciseCategoryMuscle }).exec(function(){ });
+          // Sit-ups is a muscle exercise that trains abdominals
+          Tricep.create({ ofMuscleExercise: exerciseCategoryMuscle }).exec(function(e, exerciseCategoryMuscleTricep){
+            Muscle.update({ id: exerciseCategoryMuscle.id }, { isTricep: exerciseCategoryMuscleTricep }).exec(function(){ });
+          });
+        });
+      });
+    });
+
+
+
+
+    // Create the exercise biceps curl
+    Exercise.create({ name: 'Biceps Curl' }).exec(function(e, exercise){
+      // Determin that the amount has the quantity of 50 (whether it is 50 repetitions or 50 minutes is not set yet)
+      Amount.create({ ofExercise: exercise, quantity: 50 }).exec(function(e, exerciseAmount){
+        AmountType.create({ ofAmount: exerciseAmount }).exec(function(e, exerciseAmountType){
+          Amount.update({ id: exerciseAmount.id }, { ofType: exerciseAmountType }).exec(function(){ });
+          // This is where you determine that the amount type is repetitions (with 20kg)
+          Repetition.create({ ofAmountType: exerciseAmountType, weight: 15 }).exec(function(e, exerciseAmountTypeRepetition){
+            AmountType.update({ id: exerciseAmountType.id }, { isRepetition: exerciseAmountTypeRepetition }).exec(function(){ });
+          });
+        });
+        // Create calorie object with 200, and hook it up with the amount (50 reps with 20kg = 200 kcal)
+        Calorie.create({ val: 25, burnedBy: exerciseAmount }).exec(function(e, exerciseAmountCalorie){
+          Amount.update({ id: exerciseAmount.id }, { burns: exerciseAmountCalorie }).exec(function(){ });
+        });
+      });
+      // Create the exercise type of sit-ups
+      ExerciseType.create({ categoryOf: exercise }).exec(function(e, exerciseCategory){
+        Exercise.update({ id: exercise.id }, { ofCategory: exerciseCategory }).exec(function(){ });
+        // Sit-ups is a muscle exercise
+        Muscle.create({ ofExerciseType: exerciseCategory }).exec(function(e, exerciseCategoryMuscle){
+          ExerciseType.update({ id: exerciseCategory.id }, { isMuscle: exerciseCategoryMuscle }).exec(function(){ });
+          // Sit-ups is a muscle exercise that trains abdominals
+          Bicep.create({ ofMuscleExercise: exerciseCategoryMuscle }).exec(function(e, exerciseCategoryMuscleBicep){
+            Muscle.update({ id: exerciseCategoryMuscle.id }, { isBicep: exerciseCategoryMuscleBicep }).exec(function(){ });
+          });
+        });
+      });
+    });
+
+
+    // Create the exercise Dumbbell Shrug
+    Exercise.create({ name: 'Dumbbell Shrug' }).exec(function(e, exercise){
+      // Determin that the amount has the quantity of 50 (whether it is 50 repetitions or 50 minutes is not set yet)
+      Amount.create({ ofExercise: exercise, quantity: 20 }).exec(function(e, exerciseAmount){
+        AmountType.create({ ofAmount: exerciseAmount }).exec(function(e, exerciseAmountType){
+          Amount.update({ id: exerciseAmount.id }, { ofType: exerciseAmountType }).exec(function(){ });
+          // This is where you determine that the amount type is repetitions (with 20kg)
+          Repetition.create({ ofAmountType: exerciseAmountType, weight: 20 }).exec(function(e, exerciseAmountTypeRepetition){
+            AmountType.update({ id: exerciseAmountType.id }, { isRepetition: exerciseAmountTypeRepetition }).exec(function(){ });
+          });
+        });
+        // Create calorie object with 200, and hook it up with the amount (50 reps with 20kg = 200 kcal)
+        Calorie.create({ val: 100, burnedBy: exerciseAmount }).exec(function(e, exerciseAmountCalorie){
+          Amount.update({ id: exerciseAmount.id }, { burns: exerciseAmountCalorie }).exec(function(){ });
+        });
+      });
+      // Create the exercise type of sit-ups
+      ExerciseType.create({ categoryOf: exercise }).exec(function(e, exerciseCategory){
+        Exercise.update({ id: exercise.id }, { ofCategory: exerciseCategory }).exec(function(){ });
+        // Sit-ups is a muscle exercise
+        Muscle.create({ ofExerciseType: exerciseCategory }).exec(function(e, exerciseCategoryMuscle){
+          ExerciseType.update({ id: exerciseCategory.id }, { isMuscle: exerciseCategoryMuscle }).exec(function(){ });
+          // Sit-ups is a muscle exercise that trains abdominals
+          Shoulder.create({ ofMuscleExercise: exerciseCategoryMuscle }).exec(function(e, exerciseCategoryMuscleShoulder){
+            Muscle.update({ id: exerciseCategoryMuscle.id }, { isShoulder: exerciseCategoryMuscleShoulder }).exec(function(){ });
+          });
+        });
+      });
+    });
+
+// Create the exercise leg curl
+    Exercise.create({ name: 'Leg-Curl' }).exec(function(e, exercise){
+      // Determin that the amount has the quantity of 50 (whether it is 50 repetitions or 50 minutes is not set yet)
+      Amount.create({ ofExercise: exercise, quantity: 50 }).exec(function(e, exerciseAmount){
+        AmountType.create({ ofAmount: exerciseAmount }).exec(function(e, exerciseAmountType){
+          Amount.update({ id: exerciseAmount.id }, { ofType: exerciseAmountType }).exec(function(){ });
+          // This is where you determine that the amount type is repetitions (with 20kg)
+          Repetition.create({ ofAmountType: exerciseAmountType, weight: 40 }).exec(function(e, exerciseAmountTypeRepetition){
+            AmountType.update({ id: exerciseAmountType.id }, { isRepetition: exerciseAmountTypeRepetition }).exec(function(){ });
+          });
+        });
+        // Create calorie object with 200, and hook it up with the amount (50 reps with 20kg = 200 kcal)
+        Calorie.create({ val: 100, burnedBy: exerciseAmount }).exec(function(e, exerciseAmountCalorie){
+          Amount.update({ id: exerciseAmount.id }, { burns: exerciseAmountCalorie }).exec(function(){ });
+        });
+      });
+      // Create the exercise type of sit-ups
+      ExerciseType.create({ categoryOf: exercise }).exec(function(e, exerciseCategory){
+        Exercise.update({ id: exercise.id }, { ofCategory: exerciseCategory }).exec(function(){ });
+        // Sit-ups is a muscle exercise
+        Muscle.create({ ofExerciseType: exerciseCategory }).exec(function(e, exerciseCategoryMuscle){
+          ExerciseType.update({ id: exerciseCategory.id }, { isMuscle: exerciseCategoryMuscle }).exec(function(){ });
+          // Sit-ups is a muscle exercise that trains abdominals
+          Leg.create({ ofMuscleExercise: exerciseCategoryMuscle }).exec(function(e, exerciseCategoryMuscleLeg){
+            Muscle.update({ id: exerciseCategoryMuscle.id }, { isLeg: exerciseCategoryMuscleLeg }).exec(function(){ });
+          });
+        });
+      });
+    });
+
+
+    
+
   }
 
 };
