@@ -32,8 +32,16 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'homepage' },
-  '/seed': 'SeedController.init'
+  '/': {
+    view: 'homepage'
+  },
+
+  '/seed': 'SeedController.init',
+  '/parse': 'ParseController.init',
+  '/rdf-upload': 'ParseController.upload'
+
+
+
 
 
   /***************************************************************************

@@ -1,7 +1,7 @@
 /**
  * Recipe.js
  *
- * @description :: Multiple food objects can make a recipe.
+ * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
@@ -9,9 +9,36 @@ module.exports = {
 
   attributes: {
 
-    hasFoods: {
-      collection: 'food',
-      via: 'inRecipes'
+    produces: {
+      model: 'food'
+    },
+
+    stages: {
+      model: 'stageSequence'
+    },
+
+    diet: {
+      model: 'diet'
+    },
+
+    cuisine: {
+      model: 'cuisine'
+    },
+
+    occasion: {
+      model: 'occasion'
+    },
+
+    serve_as: {
+      model: 'course'
+    },
+
+    serves: {
+      type: 'string'
+    },
+
+    recipe_has_nutritions: {
+      model: 'recipeNutrition'
     }
 
   }

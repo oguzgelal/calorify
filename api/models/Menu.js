@@ -1,5 +1,5 @@
 /**
- * Food.js
+ * Menu.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -9,21 +9,31 @@ module.exports = {
 
   attributes: {
 
-    name: {
-      type: 'string'
+    subclassOf: {
+      model: 'collection'
     },
 
-    shopping_category: {
-      model: 'shoppingCategory'
+    canape: {
+      model: 'recipe'
     },
 
-    at_its_best: {
-      model: 'season'
+    starter: {
+      model: 'recipe'
     },
 
-    food_has_nutritions: {
-      model: 'foodNutrition'
-    }
+    main_course: {
+      model: 'recipe'
+    },
+
+    side_dish: {
+      model: 'recipe'
+    },
+
+    dessert: {
+      model: 'recipe'
+    },
+
+
 
   }
 };
